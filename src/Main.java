@@ -1,3 +1,5 @@
+import DAO.ConnectionDAO;
+
 import java.util.Scanner;
 // DBLIST.DBCONNECTION = LISTA TODOS OS DADOS DA TABELA JOGADOR
 // ResultSet resultSet = statement.executeQuery("select * from jogador");
@@ -5,15 +7,30 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        DbConnection dblist = new DbConnection();
+        ConnectionDAO dblist = new ConnectionDAO();
         PlayerRegister Register = new PlayerRegister();
-//        Scanner ent = new Scanner(System.in);
-//        UserRegister userRegister = new UserRegister();
+        Scanner ent = new Scanner(System.in);
+        String question;
 
-//        dblist.SqlInsert(null, "Ney", "4", "Falso 9", 27, "0800");
-        dblist.SqlConnection();
+        System.out.println("""
+                Escolha uma opção:\s
+                 1 - Registrar.
+                 2 - Listar dados.""");
 
-//        Register.register();
+        int choose = ent.nextInt();
+
+        switch (choose) {
+            case 1:
+                Register.register();
+                break;
+
+            case 2:
+                ;
+        }
+
+
+
+
 
     }
 }

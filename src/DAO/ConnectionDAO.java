@@ -1,7 +1,11 @@
+package DAO;
+
 import java.sql.*;
 import java.sql.DriverManager;
 
-public class DbConnection {
+
+    // Procedimento para listar a tabela jogador
+public class ConnectionDAO {
     public void SqlConnection() {
         String url = "jdbc:mysql://localhost:3306/teste";
         String username = "root";
@@ -32,7 +36,8 @@ public class DbConnection {
         }
     }
 
-    public void SqlInsert(Integer id, String name, String cpf, String pos_preferencia, int age, String phone_number ){
+    // Procedimento para insert na tabela jogador
+    public void SqlInsert(Integer id, String name, String cpf, String pos_preferencia, int age, String phone_number, String usuario, String senha ){
         String url = "jdbc:mysql://localhost:3306/teste";
         String username = "root";
         String password = "";
@@ -44,14 +49,14 @@ public class DbConnection {
             Statement statement = connection.createStatement();
 
             //
-            int insertSet = statement.executeUpdate(
-                    "insert into jogador (idjogador, nome , cpf , pos_preferencia , idade , tel_jogador) values"
+            statement.executeUpdate(
+                    "insert into jogador (idjogador, nome , cpf , pos_preferencia , idade , tel_jogador, usuario, senha) values"
                             + "("+ id + ","
                             + "'" + name + "'" + ","
                             + "'" + cpf + "'" + ","
                             + "'" + pos_preferencia + "'" + ","
                             + age + "," +
-                            "'" + phone_number + "'" + ")"
+                            "'" + phone_number + "'" + "," + "'" + usuario + "'" + "," + "'" + senha + "'" + ")"
 
 
             );
@@ -62,4 +67,7 @@ public class DbConnection {
             System.out.println(e);
         }
     }
+
+
+
 }
